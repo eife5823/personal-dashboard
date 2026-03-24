@@ -10,9 +10,9 @@ const useWeather = () => {
   const { isLoading } = storeToRefs(mainStore)
 
   const weatherMap = {
-    [WeatherCode.CLEAR_SKY]: 'Clear Sky',
-    [WeatherCode.MAINLY_CLEAR]: 'Mainly Clear',
-    [WeatherCode.PARTLY_CLOUDY]: 'Partly Cloudy',
+    [WeatherCode.CLEAR_SKY]: 'Sunny',
+    [WeatherCode.MAINLY_CLEAR]: 'Cloudy',
+    [WeatherCode.PARTLY_CLOUDY]: 'Cloudy',
     [WeatherCode.OVERCAST]: 'Overcast',
     [WeatherCode.FOG]: 'Fog',
     [WeatherCode.DEPOSITING_RIME_FOG]: 'Depositing Rime Fog',

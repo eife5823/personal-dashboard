@@ -1,11 +1,11 @@
 <template>
-  <div class="weather-summary p-6 rounded-xl bg-secondary flex-column lg:p-4">
+  <div class="weather-summary p-6 rounded-xl bg-secondary flex-column lg:p-4 xl:p-8">
     <div class="flex-space-between">
       <div
         class="location text-white px-3 rounded-2xl bg-purple-100 flex-center gap-1 h-10 min-w-30"
       >
         <div class="i-tabler-map-pin-filled text-6 text-white cursor-pointer" />
-        <span>{{ weatherData?.name }}</span>
+        <span class="text-5">{{ weatherData?.name }}</span>
       </div>
       <Toggle class="h-10 w-20" />
     </div>
@@ -23,9 +23,9 @@
           >
         </div>
       </div>
-      <div class="right flex-column items-end">
-        <img src="@/assets/images/cloudy.webp" class="lg:(h-30 w-30)" alt="" />
-        <h3 class="text-end lg:(text-5)">{{ weatherCode }}</h3>
+      <div class="right flex-column gap-1 items-center">
+        <TheImg :src="weatherCode" img-class="lg:(h-30 w-30)" :alt="weatherCode" />
+        <h3 class="lg:text-5 xl:text-6">{{ weatherCode }}</h3>
       </div>
     </div>
   </div>
