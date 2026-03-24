@@ -1,5 +1,16 @@
 @font-face {
-  font-family: 'Raleway'; // 這裡只寫名字
+  font-family: 'Outfit';
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+  src:
+    local('Outfit'),
+    local('Outfit-Regular'),
+    url('@/assets/fonts/Outfit-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Raleway';
   font-display: swap;
   font-weight: normal;
   font-style: normal;
@@ -7,17 +18,6 @@
     local('Raleway'),
     local('Raleway-Regular'),
     url('@/assets/fonts/Raleway-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Raleway'; // 名字必須一致，透過 font-weight 來區分
-  font-display: swap;
-  font-weight: bold;
-  font-style: normal;
-  src:
-    local('Raleway Bold'),
-    local('Raleway-Bold'),
-    url('@/assets/fonts/Raleway-Bold.ttf') format('truetype');
 }
 
 *,
@@ -28,7 +28,7 @@
 
 html,
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Outfit', sans-serif;
   touch-action: manipulation;
   margin: 0;
   padding: 0;

@@ -4,12 +4,14 @@ import tseslint from 'typescript-eslint'
 import pluginVue from 'eslint-plugin-vue'
 import prettierConfig from 'eslint-config-prettier'
 import prettierPlugin from 'eslint-plugin-prettier'
+import unocss from '@unocss/eslint-config/flat'
 import autoImportGlobals from './.eslintrc-auto-import.json' with { type: 'json' }
 
 export default [
   js.configs.recommended,
   ...tseslint.configs.recommended,
   ...pluginVue.configs['flat/recommended'],
+  unocss,
   prettierConfig,
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,vue}'],

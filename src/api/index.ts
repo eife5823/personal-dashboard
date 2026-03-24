@@ -1,5 +1,7 @@
 import axios, { InternalAxiosRequestConfig } from 'axios'
 import { nanoid } from 'nanoid'
+import handleErrors from './handleErrors'
+import weatherApi from './weather'
 
 interface ExtendInternalAxiosRequestConfig extends InternalAxiosRequestConfig {
   id: string
@@ -32,6 +34,17 @@ axiosInstance.interceptors.response.use(
     return response
   },
   error => {
+    const config = error.config as ExtendInternalAxiosRequestConfig
+    if (config?.id) {
+      connectSource.delete(config.id)
+    }
+
+    // http errors
+    if (axios.isAxiosError(error)) {
+      handleErrors(error)
+    }
+
+    // other errors
     throw error
   }
 )
@@ -41,4 +54,8 @@ export const cancelAllRequest = () => {
     controller.abort()
   })
   connectSource.clear()
+}
+
+export const $api = {
+  ...weatherApi
 }

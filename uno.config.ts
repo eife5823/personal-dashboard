@@ -1,11 +1,28 @@
-import { defineConfig, presetIcons, transformerVariantGroup, presetWind4 } from 'unocss'
-// import presetWind4 from '@unocss/preset-wind4'
-// import transformerVariantGroup from '@unocss/transformer-variant-group'
+import {
+  defineConfig,
+  presetIcons,
+  presetWind4,
+  transformerVariantGroup,
+  transformerDirectives
+} from 'unocss'
 
 export default defineConfig({
-  presets: [presetWind4(), presetIcons()],
-  transformers: [transformerVariantGroup()],
+  presets: [
+    presetWind4(),
+    presetIcons({
+      customizations: {
+        iconCustomizer(collection, icon, props) {
+          if (collection === 'tabler') {
+            props.minWidth = '12px'
+            props.minHeight = '12px'
+          }
+        }
+      }
+    })
+  ],
+  transformers: [transformerVariantGroup(), transformerDirectives()],
   shortcuts: [
+    ['flex-column', 'flex flex-col'],
     ['flex-center', 'flex items-center justify-center'],
     ['flex-left', 'flex items-center justify-start'],
     ['flex-space-between', 'flex items-center justify-between'],
@@ -17,17 +34,22 @@ export default defineConfig({
       black: '#080808',
       primary: '#060C1A',
       secondary: '#0E1421',
+      blue: {
+        100: '#14203A'
+      },
       purple: {
         100: '#7B90D2'
       }
+    },
+    breakpoints: {
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1440px'
+    },
+    screens: {
+      '2xl': '1400px'
     }
-    // breakpoints: {
-    //   xs: '320px',
-    //   sm: '640px',
-    //   md: '768px',
-    //   lg: '1024px',
-    //   xl: '1280px',
-    //   '2xl': '1536px'
-    // }
   }
 })

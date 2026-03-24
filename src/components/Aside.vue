@@ -1,21 +1,21 @@
 <template>
   <aside
-    class="group min-h-screen bg-secondary w-15 overflow-hidden hover:w-60 transition-all duration-300"
+    class="group bg-secondary min-h-screen w-15 transition-all duration-300 overflow-hidden hover:w-60"
   >
     <ul>
-      <li class="text-purple-100 py-3 px-3 text-3">
-        <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <li class="text-3 text-purple-100 px-3 py-3">
+        <span class="opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           Dashboards
         </span>
       </li>
       <li
         v-for="item in menuItems"
         :key="item.name"
-        class="flex-left py-3 px-4 text-white cursor-pointer hover:bg-purple-100"
+        class="text-white px-4 py-3 flex-left cursor-pointer hover:bg-purple-100"
         @click="handleClickMenuItem(item.name)"
       >
         <div
-          class="flex-shrink-0 text-[24px] transition-color duration-300"
+          class="text-[24px] flex-shrink-0 transition-color duration-300"
           :class="`${item.icon}`"
         />
         <p class="pl-6 whitespace-nowrap">{{ item.name }}</p>

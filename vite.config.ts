@@ -34,7 +34,7 @@ export default defineConfig({
     }),
     // https://github.com/antfu/unplugin-vue-components
     Components({
-      dirs: ['src/components', 'src/views/*/components']
+      dirs: ['src/components', 'src/views', 'src/views/*/components']
     })
   ],
   resolve: {
