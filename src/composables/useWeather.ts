@@ -46,7 +46,7 @@ const useWeather = () => {
     timezone: 'auto',
     [WeatherTimeType.HOURLY]: 'temperature_2m',
     [WeatherTimeType.DAILY]:
-      'temperature_2m_max,temperature_2m_min,sunset,sunrise,uv_index_max,wind_speed_10m_max',
+      'weather_code,temperature_2m_max,temperature_2m_min,sunset,sunrise,uv_index_max,wind_speed_10m_max',
     [WeatherTimeType.CURRENT]: 'temperature_2m,weather_code,relative_humidity_2m'
   }
   const defaultCity = 'taipei'

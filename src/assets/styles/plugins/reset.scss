@@ -8,7 +8,6 @@
     local('Outfit-Regular'),
     url('@/assets/fonts/Outfit-Regular.ttf') format('truetype');
 }
-
 @font-face {
   font-family: 'Raleway';
   font-display: swap;
@@ -18,6 +17,16 @@
     local('Raleway'),
     local('Raleway-Regular'),
     url('@/assets/fonts/Raleway-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Raleway-bold';
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+  src:
+    local('Raleway'),
+    local('Raleway-Bold'),
+    url('@/assets/fonts/Raleway-Bold.ttf') format('truetype');
 }
 
 *,
@@ -33,15 +42,17 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  overscroll-behavior: none;
 }
 
 #app {
   height: 100%;
-}
-
-html {
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
-    env(safe-area-inset-left);
+  width: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 ul,

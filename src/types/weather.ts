@@ -67,6 +67,7 @@ export interface WeatherData {
     relative_humidity_2m: number
   },
   daily: {
+    weather_code: WeatherCode[]
     temperature_2m_max: number[]
     temperature_2m_min: number[]
     sunset: string[]

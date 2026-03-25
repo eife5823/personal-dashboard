@@ -1,7 +1,7 @@
 <template>
-  <section class="weather">
+  <section class="weather flex-column">
     <div class="lg:(flex gap-5)">
-      <div class="w-full 2xl:(w-150) lg:(w-90) xl:(w-130)">
+      <div class="mb-6 w-full 2xl:(w-150) lg:(w-90) xl:(w-130)">
         <Search class="mb-7" />
         <WeatherSummary
           class="h-80"
@@ -11,6 +11,7 @@
       </div>
       <WeatherHighlight class="flex-1 h-90" :weather-data="weatherData" />
     </div>
+    <WeatherForecast class="flex-1" />
   </section>
 </template>
 

@@ -51,5 +51,10 @@ export default defineConfig({
     screens: {
       '2xl': '1400px'
     }
-  }
+  },
+  rules: [
+    ['bg-forecast', { 
+      background: 'linear-gradient(0deg, #0E1421 0%, #1D325F 50%, #0E1421 100%)' 
+    }]
+  ]
 })

@@ -15,6 +15,7 @@ export default defineStore('weather', () => {
       temperature_2m: []
     },
     daily: {
+      weather_code: [],
       temperature_2m_max: [],
       temperature_2m_min: [],
       sunset: [],
