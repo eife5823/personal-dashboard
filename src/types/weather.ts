@@ -1,4 +1,4 @@
-type FetchWeatherFn = (cityName: string) => Promise<any>;
+type FetchWeatherFn = (cityName: string) => Promise<any>
 
 export const fetchWeatherKey: InjectionKey<FetchWeatherFn> = Symbol('fetchWeather')
 
@@ -65,7 +65,7 @@ export interface WeatherData {
     weather_code: WeatherCode
     temperature_2m: number
     relative_humidity_2m: number
-  },
+  }
   daily: {
     weather_code: WeatherCode[]
     temperature_2m_max: number[]
@@ -75,4 +75,10 @@ export interface WeatherData {
     uv_index_max: number[]
     wind_speed_10m_max: number[]
   }
+}
+export interface ForecastData {
+  date: string
+  weatherCode: string
+  maxTemp: number
+  minTemp: number
 }

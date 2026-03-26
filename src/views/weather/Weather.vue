@@ -11,7 +11,7 @@
       </div>
       <WeatherHighlight class="flex-1 h-90" :weather-data="weatherData" />
     </div>
-    <WeatherForecast class="flex-1" />
+    <WeatherForecast class="lg:flex-1" :seven-days-forecast="sevenDaysForecast" />
   </section>
 </template>
 
@@ -19,12 +19,9 @@
 import useWeather from '@/composables/useWeather'
 import { fetchWeatherKey } from '@/types/weather'
 
-const { fetchWeather, weatherMap } = useWeather()
+const { weatherMap, weatherData, sevenDaysForecast, fetchWeather } = useWeather()
 
 provide(fetchWeatherKey, fetchWeather)
-
-const weatherStore = useWeatherStore()
-const { weatherData } = storeToRefs(weatherStore)
 </script>
 
 <style scoped></style>
