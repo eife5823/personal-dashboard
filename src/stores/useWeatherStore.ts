@@ -1,10 +1,11 @@
-import { WeatherData } from '@/types/weather'
+import { WeatherData, FavoriteLocation } from '@/types/weather'
 
 export default defineStore('weather', () => {
   const defaultWeatherData = {
     name: '',
     latitude: 0,
     longitude: 0,
+    country_code: '',
     timezone: 'auto',
     current: {
       weather_code: 0,
@@ -26,12 +27,19 @@ export default defineStore('weather', () => {
   }
   const weatherData = ref<WeatherData>(defaultWeatherData)
 
+  const favorites = ref<FavoriteLocation[]>([])
+
   const updateWeatherData = (data: WeatherData) => {
     weatherData.value = { ...data }
+  }
+  const updateFavorites = (favoritesList: FavoriteLocation[]) => {
+    favorites.value = favoritesList
   }
 
   return {
     weatherData,
-    updateWeatherData
+    favorites,
+    updateWeatherData,
+    updateFavorites
   }
 })

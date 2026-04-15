@@ -1,16 +1,16 @@
 import { useToggle } from '@vueuse/core'
 
 export default defineStore('main', () => {
-  const [isLoading, toggleLoading] = useToggle(false)
+  const [isLoading, toggleIsLoading] = useToggle(false)
 
   const toggle = (val: boolean) => {
     console.log('store toggleLoading called:', val)
-    toggleLoading(val)
+    toggleIsLoading(val)
     console.log('store isLoading after:', isLoading.value)
   }
 
   return {
     isLoading,
-    toggleLoading
+    toggleIsLoading
   }
 })

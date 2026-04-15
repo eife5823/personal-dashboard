@@ -1,14 +1,14 @@
 <template>
   <div
-    class="weather-highlight text-white p-6 rounded-xl bg-secondary flex flex-col lg:(p-3) xl:p-6"
+    class="weather-highlight text-white p-6 rounded-xl bg-secondary flex flex-col lg:(p-3) xl:(px-6 py-4)"
   >
     <h2 class="mb-4 flex-none">Today's Highlight</h2>
     <div class="flex-1 gap-4 grid grid-cols-4 grid-rows-2 h-full min-h-0 lg:(gap-2) xl:gap-4">
       <div
-        class="p-4 rounded-xl bg-blue-100 flex-column gap-3 items-end xl:(p-5 items-end) lg:(px-0 py-6 items-center)"
+        class="p-4 rounded-xl bg-blue-100 flex-column items-end justify-around lg:(px-0 py-3 items-center) xl:(px-5 py-3 items-end)"
       >
         <div class="2xl:() flex gap-2 items-center lg:(text-4) xl:(text-5)">
-          <div class="i-tabler-wind text-white" />
+          <span class="i-tabler-wind text-white" />
           <p>Wind Status</p>
         </div>
         <h3 class="text-right">
@@ -16,10 +16,10 @@
         </h3>
       </div>
       <div
-        class="p-4 rounded-xl bg-blue-100 flex-column gap-3 items-end xl:(p-5 items-end) lg:(px-0 py-6 items-center)"
+        class="p-4 rounded-xl bg-blue-100 flex-column gap-3 items-end justify-around lg:(px-0 py-3 items-center) xl:(px-5 py-3 items-end)"
       >
         <div class="flex gap-2 items-center lg:(text-4) xl:(text-5)">
-          <div class="i-tabler-droplet-filled-2 text-white" />
+          <span class="i-tabler-droplet-filled-2 text-white" />
           <p>Humidity</p>
         </div>
         <h3 class="text-right">
@@ -34,10 +34,10 @@
         </div>
       </div>
       <div
-        class="p-4 rounded-xl bg-blue-100 flex-column gap-3 items-end xl:(p-5 items-end) lg:(px-0 py-6 items-center)"
+        class="p-4 rounded-xl bg-blue-100 flex-column gap-3 items-end justify-around lg:(px-0 py-3 items-center) xl:(px-5 py-3 items-end)"
       >
         <div class="flex gap-2 items-center lg:(text-4) xl:(text-5)">
-          <div class="i-tabler-uv-index text-white" />
+          <span class="i-tabler-uv-index text-white" />
           <p>UV Index</p>
         </div>
         <h3 class="text-right">
@@ -45,10 +45,10 @@
         </h3>
       </div>
       <div
-        class="p-4 rounded-xl bg-blue-100 flex-column gap-3 items-end xl:(p-5 items-end) lg:(px-0 py-6 items-center)"
+        class="p-4 rounded-xl bg-blue-100 flex-column gap-3 items-end justify-around lg:(px-0 py-3 items-center) xl:(px-5 py-3 items-end)"
       >
         <div class="flex gap-2 items-center lg:(text-4) xl:(text-5)">
-          <div class="i-tabler-uv-index text-white" />
+          <span class="i-tabler-uv-index text-white" />
           <p>UV Index</p>
         </div>
         <h3 class="text-right">

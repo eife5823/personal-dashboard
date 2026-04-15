@@ -1,14 +1,8 @@
 <template>
   <div class="search">
-    <FormInput
-      label="search"
-      class="w-full"
-      :model-value="searchText"
-      @update:model-value="searchText = $event"
-      @enter="fetchWeather(searchText)"
-    >
+    <FormInput v-model="searchText" label="search" class="w-full" @enter="fetchWeather(searchText)">
       <template #prefix>
-        <div class="i-tabler-search text-8 text-white min-h-7 min-w-7 cursor-pointer" />
+        <span class="i-tabler-search text-8 text-white min-h-7 min-w-7 cursor-pointer" />
       </template>
     </FormInput>
   </div>

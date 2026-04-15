@@ -7,6 +7,8 @@ interface ExtendInternalAxiosRequestConfig extends InternalAxiosRequestConfig {
   id: string
 }
 
+const mainStore = useMainStore()
+const { toggleIsLoading } = mainStore
 const connectSource = new Map<string, AbortController>()
 
 export const axiosInstance = axios.create({
@@ -18,6 +20,7 @@ axiosInstance.interceptors.request.use(request => {
   const controller = new AbortController()
 
   connectSource.set(`${id}`, controller)
+  if (connectSource.size > 0) toggleIsLoading(true)
 
   return {
     ...request,
@@ -30,6 +33,7 @@ axiosInstance.interceptors.response.use(
   response => {
     const { id } = response.config as ExtendInternalAxiosRequestConfig
     connectSource.delete(`${id}`)
+    if (connectSource.size === 0) toggleIsLoading(false)
 
     return response
   },
@@ -38,6 +42,7 @@ axiosInstance.interceptors.response.use(
     if (config?.id) {
       connectSource.delete(config.id)
     }
+    if (connectSource.size === 0) toggleIsLoading(false)
 
     // http errors
     if (axios.isAxiosError(error)) {
@@ -54,6 +59,7 @@ export const cancelAllRequest = () => {
     controller.abort()
   })
   connectSource.clear()
+  if (connectSource.size === 0) toggleIsLoading(false)
 }
 
 export const $api = {

@@ -10,7 +10,7 @@
       :id="props.label"
       class="input"
       :type="props.type"
-      :value="props.modelValue"
+      :value="searchText"
       :placeholder="props.placeholder"
       autocomplete="off"
       @input="handleInput"
@@ -38,21 +38,18 @@ const props = defineProps({
     type: String as PropType<'text' | 'number'>,
     default: 'text'
   },
-  modelValue: {
-    type: [String, Number],
-    required: true
-  },
   placeholder: {
     type: String,
     default: ''
   }
 })
 
-const emit = defineEmits(['update:modelValue', 'focus', 'blur', 'enter'])
+const emit = defineEmits(['focus', 'blur', 'enter'])
+const searchText = defineModel<string | number>()
 
 const handleInput = (event: Event) => {
   const target = event.target as HTMLInputElement
-  emit('update:modelValue', target.value)
+  searchText.value = target.value
 }
 const handleFocus = (event: Event) => emit('focus', event)
 const handleBlur = (event: Event) => emit('blur', event)

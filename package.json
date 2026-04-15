@@ -8,8 +8,8 @@
     "pnpm": ">=9.0.0"
   },
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "dev:client": "vite",
+    "build:client": "vue-tsc -b && vite build",
     "lint": "eslint **/src/**/*.{ts,js,vue} --fix --no-error-on-unmatched-pattern"
   },
   "dependencies": {

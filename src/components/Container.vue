@@ -3,8 +3,8 @@
     <Aside class="h-full" />
     <div class="flex flex-col h-full w-full overflow-hidden">
       <Header class="min-h-15" />
-      <!-- <Loading v-if="isLoading" /> -->
-      <router-view class="px-7 pt-3 flex-1 overflow-auto" />
+      <Loading v-if="isLoading" />
+      <router-view class="px-7 h-[calc(100%-60px)]" />
     </div>
   </section>
 </template>

@@ -16,7 +16,7 @@
         class="text-white px-4 py-3 flex-left cursor-pointer hover:text-purple-100"
         @click="handleClickMenuItem(item.name)"
       >
-        <div
+        <span
           class="text-[24px] flex-shrink-0 transition-color duration-300"
           :class="`${item.icon}`"
         />

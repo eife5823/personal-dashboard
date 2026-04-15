@@ -60,6 +60,7 @@ export interface WeatherData {
   name: string
   latitude: number
   longitude: number
+  country_code: string
   timezone: string
   current: {
     weather_code: WeatherCode
@@ -79,6 +80,15 @@ export interface WeatherData {
 export interface ForecastData {
   date: string
   weatherCode: string
+  maxTemp: number
+  minTemp: number
+}
+export interface FavoriteLocation {
+  cityName: string
+  latitude: number
+  longitude: number
+  weatherCode: string
+  countryCode: string
   maxTemp: number
   minTemp: number
 }
