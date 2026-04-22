@@ -9,7 +9,13 @@
         @click="fetchWeather(favorite.cityName)"
       >
         <div class="flex-column">
-          <span class="text-8">{{ getFlagIcon(favorite.countryCode) }}</span>
+          <div class="flex items-center">
+            <span
+              class="i-tabler-star-filled text-8 text-purple-100 mr-3 cursor-pointer"
+              @click="toggleFavorite(favorite)"
+            />
+            <span class="text-8">{{ getFlagIcon(favorite.countryCode) }}</span>
+          </div>
           <h3>{{ favorite.cityName }}</h3>
           <span class="text-5">{{ favorite.weatherCode }}</span>
         </div>
@@ -35,8 +41,11 @@ defineProps({
     required: true
   }
 })
+const emit = defineEmits(['toggleFavorite'])
 
 const fetchWeather = inject(fetchWeatherKey, () => Promise.reject('fetchWeather not provided'))
+
+const toggleFavorite = (data: FavoriteLocation) => emit('toggleFavorite', data)
 
 const getFlagIcon = (code: string) => {
   return code.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0) + 127397))

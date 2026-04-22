@@ -72,7 +72,18 @@ const favoriteIcon = computed(() =>
     ? 'i-tabler-star-filled'
     : 'i-tabler-star'
 )
-const toggleFavorite = (data: WeatherData) => emit('toggleFavorite', data)
+const toggleFavorite = (data: WeatherData) => {
+  const favoriteData: FavoriteLocation = {
+    cityName: data.name,
+    latitude: data.latitude,
+    longitude: data.longitude,
+    countryCode: data.country_code,
+    weatherCode: props.weatherCode,
+    maxTemp: data.daily.temperature_2m_max[0],
+    minTemp: data.daily.temperature_2m_min[0]
+  }
+  emit('toggleFavorite', favoriteData)
+}
 </script>
 
 <style scoped></style>

@@ -1,6 +1,7 @@
 import 'dotenv/config'
 import express, { Request, Response } from 'express'
 import cors from 'cors'
+import prisma from './prisma'
 import { FavoriteLocation } from './types'
 
 const app = express()

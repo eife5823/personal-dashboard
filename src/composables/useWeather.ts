@@ -98,21 +98,21 @@ const useWeather = () => {
     }
   }
 
-  const toggleFavorite = async (data: WeatherData) => {
-    const { name, country_code: countryCode, latitude, longitude, daily } = data
+  const toggleFavorite = async (data: FavoriteLocation) => {
+    const { cityName, countryCode, latitude, longitude, weatherCode, maxTemp, minTemp } = data
     const params = {
-      cityName: name,
+      cityName,
       latitude,
       longitude,
       countryCode,
-      weatherCode: weatherCodeMap[data.current.weather_code],
-      maxTemp: daily.temperature_2m_max[0],
-      minTemp: daily.temperature_2m_min[0]
+      weatherCode,
+      maxTemp,
+      minTemp
     }
     try {
-      const isPinned = favorites.value.some(location => location.cityName === name)
+      const isPinned = favorites.value.some(location => location.cityName === cityName)
       if (isPinned) {
-        await $api.deleteFavorite(name)
+        await $api.deleteFavorite(cityName)
       } else {
         if (favorites.value.length >= 2) {
           alert('You can only add up to 2 favorite locations.')

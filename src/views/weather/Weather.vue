@@ -10,7 +10,11 @@
           :favorites="favorites"
           @toggle-favorite="toggleFavorite($event)"
         />
-        <WeatherFavorites class="flex-1" :favorites="favorites" />
+        <WeatherFavorites
+          class="flex-1"
+          :favorites="favorites"
+          @toggle-favorite="toggleFavorite($event)"
+        />
       </div>
       <div class="max-w-220">
         <WeatherHighlight class="mb-5" :weather-data="weatherData" />

@@ -37,7 +37,7 @@ importers:
         specifier: ^2.2.390
         version: 2.2.446
       '@types/node':
-        specifier: ^24.3.1
+        specifier: ^24.11.0
         version: 24.11.0
       '@typescript-eslint/parser':
         specifier: ^8.43.0
