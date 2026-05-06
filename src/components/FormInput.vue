@@ -1,11 +1,13 @@
 <template>
   <div
-    class="form-input px-3 flex gap-5 items-center"
+    class="form-input px-3 flex gap-5 items-center relative"
     :class="{
-      'form-field-input-search': props.inputType === 'search'
+      'form-field-input-login': props.inputType === 'login',
+      'form-field-input-search': props.inputType === 'search',
+      'form-field-input-disabled': props.inputType === 'disabled'
     }"
   >
-    <slot name="prefix" class="text-white" />
+    <slot name="prefix" />
     <input
       :id="props.label"
       class="input"
@@ -24,6 +26,7 @@
 
 <script setup lang="ts">
 import { PropType } from 'vue'
+import { InputType } from '@/types'
 
 const props = defineProps({
   label: {
@@ -31,7 +34,7 @@ const props = defineProps({
     default: ''
   },
   inputType: {
-    type: String as PropType<'search'>,
+    type: String as PropType<InputType>,
     default: 'search'
   },
   type: {
@@ -66,7 +69,6 @@ input {
   outline: none;
   letter-spacing: 1px;
   line-height: normal;
-  @apply text-white text-5 font-bold;
 }
 input:-webkit-autofill {
   transition: background-color 5000s ease-in-out 0s;
@@ -76,6 +78,13 @@ input:-webkit-autofill {
   @apply ring-2 ring-purple-100;
 }
 .form-field-input-search {
-  @apply w-full h-13 rounded-xl bg-secondary;
+  @apply w-full h-13 rounded-xl bg-secondary text-white text-5;
+}
+.form-field-input-login {
+  background-color: #eee;
+  @apply w-full h-13 rounded-xl text-black text-4;
+}
+:slotted(.suffix) {
+  @apply absolute right-2;
 }
 </style>

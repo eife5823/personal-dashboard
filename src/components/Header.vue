@@ -3,7 +3,10 @@
     <h4 class="text-white font-[Raleway-bold] font-bold">{{ route.name }}</h4>
     <div class="flex-space-around w-20">
       <span class="i-tabler-bell text-6 text-white cursor-pointer" />
-      <span class="i-tabler-user-filled text-6 text-white cursor-pointer" />
+      <span
+        class="i-tabler-user-filled text-6 text-white cursor-pointer"
+        @click="emit('show-login')"
+      />
     </div>
   </section>
 </template>
@@ -12,6 +15,7 @@
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
+const emit = defineEmits(['show-login'])
 </script>
 
 <style lang="scss" scoped></style>

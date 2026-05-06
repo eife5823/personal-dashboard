@@ -6,7 +6,9 @@
   "scripts": {
     "dev:server": "tsx watch src/index.ts",
     "build:server": "tsc -p server/tsconfig.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prisma:generate": "dlx prisma generate",
+    "prisma:studio": "dlx prisma studio"
   },
   "keywords": [],
   "author": "",

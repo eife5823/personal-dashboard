@@ -25,7 +25,7 @@ const useWeather = () => {
     [WeatherCode.DEPOSITING_RIME_FOG]: 'fog',
     [WeatherCode.DRIZZLE_LIGHT]: 'Drizzle Light',
     [WeatherCode.DRIZZLE_MODERATE]: 'Drizzle Moderate',
-    [WeatherCode.DRIZZLE_DENSE]: 'Drizzle Dense',
+    [WeatherCode.DRIZZLE_DENSE]: 'rain',
     [WeatherCode.FREEZING_DRIZZLE_LIGHT]: 'Freezing Drizzle Light',
     [WeatherCode.FREEZING_DRIZZLE_DENSE]: 'Freezing Drizzle Dense',
     [WeatherCode.RAIN_SLIGHT]: 'rain-light',
