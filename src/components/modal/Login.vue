@@ -108,7 +108,8 @@
 </template>
 
 <script setup lang="ts">
-import { ModalType, ModalProps, LoginOrSignupProps } from '@/types'
+import { ModalType, ModalProps } from '@/types'
+import { LoginOrSignupProps } from '@/types/auth'
 
 const loginData = reactive<LoginOrSignupProps>({
   userName: '',

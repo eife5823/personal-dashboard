@@ -8,13 +8,13 @@
 </template>
 
 <script setup lang="ts">
-import { ModalType, ModalProps } from '@/types'
+import { ModalProps } from '@/types'
 
 const emit = defineEmits(['close-modal'])
 
 defineProps({
   currentModal: {
-    type: Object as PropType<ModalType>,
+    type: Object as PropType<Component | null>,
     required: true
   },
   modalProps: {

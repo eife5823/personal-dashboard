@@ -1,4 +1,5 @@
 import { $api } from '@/api'
+import useAuthStore from '@/stores/useAuthStore'
 import {
   WeatherTimeType,
   WeatherCode,
@@ -6,15 +7,19 @@ import {
   WeatherData,
   FavoriteLocation
 } from '@/types/weather'
+import {  ModalType } from '@/types'
 import { getNextSevenDays } from '@/utils/tools'
 
 const useWeather = () => {
   const weatherStore = useWeatherStore()
   const mainStore = useMainStore()
+  const authStore = useAuthStore()
 
   const { updateWeatherData, updateFavorites } = weatherStore
+  const { openModal } = mainStore
   const { weatherData, favorites } = storeToRefs(weatherStore)
-  const { isLoading } = storeToRefs(mainStore)
+  const { isLoading, modalTypeMap } = storeToRefs(mainStore)
+  const { isLoggedIn } = storeToRefs(authStore)
 
   const weatherCodeMap = {
     [WeatherCode.CLEAR_SKY]: 'sunny',
@@ -23,12 +28,12 @@ const useWeather = () => {
     [WeatherCode.OVERCAST]: 'overcast',
     [WeatherCode.FOG]: 'fog',
     [WeatherCode.DEPOSITING_RIME_FOG]: 'fog',
-    [WeatherCode.DRIZZLE_LIGHT]: 'Drizzle Light',
-    [WeatherCode.DRIZZLE_MODERATE]: 'Drizzle Moderate',
+    [WeatherCode.DRIZZLE_LIGHT]: 'drizzle',
+    [WeatherCode.DRIZZLE_MODERATE]: 'drizzle',
     [WeatherCode.DRIZZLE_DENSE]: 'rain',
     [WeatherCode.FREEZING_DRIZZLE_LIGHT]: 'Freezing Drizzle Light',
     [WeatherCode.FREEZING_DRIZZLE_DENSE]: 'Freezing Drizzle Dense',
-    [WeatherCode.RAIN_SLIGHT]: 'rain-light',
+    [WeatherCode.RAIN_SLIGHT]: 'drizzle',
     [WeatherCode.RAIN_MODERATE]: 'rain',
     [WeatherCode.RAIN_HEAVY]: 'rain',
     [WeatherCode.FREEZING_RAIN_LIGHT]: 'Freezing Rain Light',
@@ -37,7 +42,7 @@ const useWeather = () => {
     [WeatherCode.SNOW_FALL_MODERATE]: 'Snow Fall Moderate',
     [WeatherCode.SNOW_FALL_HEAVY]: 'Snow Fall Heavy',
     [WeatherCode.SNOW_GRAINS]: 'Snow Grains',
-    [WeatherCode.RAIN_SHOWERS_SLIGHT]: 'rain-light',
+    [WeatherCode.RAIN_SHOWERS_SLIGHT]: 'drizzle',
     [WeatherCode.RAIN_SHOWERS_MODERATE]: 'rain',
     [WeatherCode.RAIN_SHOWERS_VIOLENT]: 'rain',
     [WeatherCode.SNOW_SHOWERS_SLIGHT]: 'Snow Showers Slight',
@@ -99,6 +104,11 @@ const useWeather = () => {
   }
 
   const toggleFavorite = async (data: FavoriteLocation) => {
+    if (!isLoggedIn.value) {
+      openModal(ModalType.Login)
+      return
+    }
+
     const { cityName, countryCode, latitude, longitude, weatherCode, maxTemp, minTemp } = data
     const params = {
       cityName,
