@@ -1,54 +1,57 @@
 <template>
   <section class="login rounded-3xl bg-white flex min-w-120 relative overflow-hidden xl:w-180">
     <div class="form-wrapper p-10 w-1/2 relative" :class="{ isShow: activeBlock === 'right' }">
-      <form>
+      <FormKit
+        type="form"
+        submit-label="Register"
+        :submit-attrs="{
+          inputClass: 'text-white font-bold py-3 rounded-xl bg-purple-100 w-full cursor-pointer'
+        }"
+        :incomplete-message="false"
+        @submit="handleSubmit"
+      >
         <h1 class="font-[Raleway-bold] mb-5">Register</h1>
-        <FormInput
-          v-model="loginData.userName"
-          label="userName"
-          class="mb-5 w-full"
+        <FormKitInput
+          :input-value="loginData.username"
+          outer-class="mb-5 w-full"
           input-type="login"
+          input-name="username"
           placeholder="Username"
         >
           <template #suffix>
             <span class="i-tabler-user-filled suffix text-8 text-black min-h-7 min-w-7" />
           </template>
-        </FormInput>
-        <FormInput
-          v-model="loginData.password"
-          label="password"
-          class="mb-5 w-full"
+        </FormKitInput>
+        <FormKitInput
+          :input-value="loginData.password"
+          outer-class="mb-5 w-full"
           input-type="login"
+          input-name="password"
           placeholder="Password"
         >
           <template #suffix>
             <span class="i-tabler-user-filled suffix text-8 text-black min-h-7 min-w-7" />
           </template>
-        </FormInput>
-        <FormInput
-          v-model="loginData.email"
-          label="email"
-          class="mb-5 w-full"
+        </FormKitInput>
+        <FormKitInput
+          :input-value="loginData.email"
+          outer-class="mb-5 w-full"
           input-type="login"
+          input-name="email"
           placeholder="Email"
+          validation="email"
         >
           <template #suffix>
             <span class="i-tabler-user-filled suffix text-8 text-black min-h-7 min-w-7" />
           </template>
-        </FormInput>
-        <button
-          class="text-white font-bold py-3 rounded-xl bg-purple-100 w-full cursor-pointer"
-          type="submit"
-        >
-          Register
-        </button>
-      </form>
+        </FormKitInput>
+      </FormKit>
     </div>
     <div class="form-wrapper p-10 w-1/2 relative" :class="{ isShow: activeBlock === 'left' }">
       <form>
         <h1 class="font-[Raleway-bold] mb-5">Login</h1>
         <FormInput
-          v-model="loginData.userName"
+          v-model="loginData.username"
           label="userName"
           class="mb-5 w-full"
           input-type="login"
@@ -112,7 +115,7 @@ import { ModalType, ModalProps } from '@/types'
 import { LoginOrSignupProps } from '@/types/auth'
 
 const loginData = reactive<LoginOrSignupProps>({
-  userName: '',
+  username: '',
   password: '',
   email: ''
 })
@@ -120,6 +123,9 @@ const activeBlock = ref<'left' | 'right'>('right')
 
 const changeBlock = (block: 'left' | 'right') => {
   activeBlock.value = block
+}
+const handleSubmit = () => {
+  console.log('Form submitted:', loginData)
 }
 </script>
 

@@ -1,5 +1,5 @@
 export interface LoginOrSignupProps {
-  userName: string
+  username: string
   password: string
   email?: string
 }

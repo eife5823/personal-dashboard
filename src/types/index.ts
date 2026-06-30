@@ -13,7 +13,7 @@ export interface MenuItem {
   icon: string
 }
 
-export type InputType = 'search' | 'login' | 'disabled'
+export type InputType = 'search' | 'login'
 export interface ModalProps {
   [key: string]: any
 }
