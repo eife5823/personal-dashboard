@@ -11,6 +11,7 @@
     }"
     :value="inputValue"
     :validation="validationType"
+    validation-visibility="submit"
   >
     <template v-if="$slots.prefix" #prefix>
       <slot name="prefix" />
@@ -59,8 +60,7 @@ const props = defineProps({
 const innerClass = computed(() => {
   return {
     login: 'form-field-input-login',
-    search: 'form-field-input-search',
-    disabled: 'form-field-input-disabled'
+    search: 'form-field-input-search'
   }[props.inputType]
 })
 const validationType = computed(() => {
