@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
 import { PropType } from 'vue'
-import { InputType } from '@/types'
+import { InputType } from '@/types/form'
 
 const props = defineProps({
   label: {

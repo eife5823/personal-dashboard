@@ -5,15 +5,13 @@ export enum Menu {
   STOCK = 'Stock',
   PLANER = 'Planer'
 }
-export enum ModalType {
-  Login = 'Login'
-}
 export interface MenuItem {
   name: Menu
   icon: string
 }
-
-export type InputType = 'search' | 'login'
+export enum ModalType {
+  Login = 'Login'
+}
 export interface ModalProps {
   [key: string]: any
 }

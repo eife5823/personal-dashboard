@@ -9,8 +9,7 @@
       inner: `form-input px-3 flex gap-5 items-center relative ${innerClass}`,
       input: `input flex-1 min-w-0`
     }"
-    :value="inputValue"
-    :validation="validationType"
+    :validation="validation"
     validation-visibility="submit"
   >
     <template v-if="$slots.prefix" #prefix>
@@ -24,7 +23,7 @@
 
 <script setup lang="ts">
 import { PropType, computed } from 'vue'
-import { InputType } from '@/types'
+import { InputType } from '@/types/form'
 
 const props = defineProps({
   label: {
@@ -43,15 +42,15 @@ const props = defineProps({
     type: String as PropType<'text' | 'email' | 'number'>,
     default: 'text'
   },
-  inputValue: {
-    type: String,
-    default: ''
-  },
   placeholder: {
     type: String,
     default: ''
   },
   outerClass: {
+    type: String,
+    default: ''
+  },
+  validation: {
     type: String,
     default: ''
   }
@@ -62,10 +61,6 @@ const innerClass = computed(() => {
     login: 'form-field-input-login',
     search: 'form-field-input-search'
   }[props.inputType]
-})
-const validationType = computed(() => {
-  if (props.type === 'email') return 'required|email'
-  return 'required'
 })
 </script>
 

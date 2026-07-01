@@ -12,34 +12,33 @@
       >
         <h1 class="font-[Raleway-bold] mb-5">Register</h1>
         <FormKitInput
-          :input-value="loginData.username"
           outer-class="mb-5 w-full"
           input-type="login"
           input-name="username"
           placeholder="Username"
+          :validation="`${InputRules.REQUIRED}|${InputRules.ALPHANUMERIC}|${InputRules.LENGTH}:6,10`"
         >
           <template #suffix>
             <span class="i-tabler-user-filled suffix text-8 text-black min-h-7 min-w-7" />
           </template>
         </FormKitInput>
         <FormKitInput
-          :input-value="loginData.password"
           outer-class="mb-5 w-full"
           input-type="login"
           input-name="password"
           placeholder="Password"
+          :validation="`${InputRules.REQUIRED}|${InputRules.ALPHANUMERIC}|${InputRules.LENGTH}:6,10`"
         >
           <template #suffix>
             <span class="i-tabler-user-filled suffix text-8 text-black min-h-7 min-w-7" />
           </template>
         </FormKitInput>
         <FormKitInput
-          :input-value="loginData.email"
           outer-class="mb-5 w-full"
           input-type="login"
           input-name="email"
           placeholder="Email"
-          validation="email"
+          :validation="`${InputRules.REQUIRED}|${InputRules.EMAIL}`"
         >
           <template #suffix>
             <span class="i-tabler-user-filled suffix text-8 text-black min-h-7 min-w-7" />
@@ -48,37 +47,39 @@
       </FormKit>
     </div>
     <div class="form-wrapper p-10 w-1/2 relative" :class="{ isShow: activeBlock === 'left' }">
-      <form>
+      <FormKit
+        type="form"
+        submit-label="Login"
+        :submit-attrs="{
+          inputClass: 'text-white font-bold py-3 rounded-xl bg-purple-100 w-full cursor-pointer'
+        }"
+        :incomplete-message="false"
+        @submit="handleSubmit"
+      >
         <h1 class="font-[Raleway-bold] mb-5">Login</h1>
-        <FormInput
-          v-model="loginData.username"
-          label="userName"
-          class="mb-5 w-full"
+        <FormKitInput
+          outer-class="mb-5 w-full"
           input-type="login"
+          input-name="username"
           placeholder="Username"
+          :validation="`${InputRules.REQUIRED}|${InputRules.ALPHANUMERIC}|${InputRules.LENGTH}:6,10`"
         >
           <template #suffix>
             <span class="i-tabler-user-filled suffix text-8 text-black min-h-7 min-w-7" />
           </template>
-        </FormInput>
-        <FormInput
-          v-model="loginData.password"
-          label="password"
-          class="mb-5 w-full"
+        </FormKitInput>
+        <FormKitInput
+          outer-class="mb-5 w-full"
           input-type="login"
+          input-name="password"
           placeholder="Password"
+          :validation="`${InputRules.REQUIRED}|${InputRules.ALPHANUMERIC}|${InputRules.LENGTH}:6,10`"
         >
           <template #suffix>
             <span class="i-tabler-user-filled suffix text-8 text-black min-h-7 min-w-7" />
           </template>
-        </FormInput>
-        <button
-          class="text-white font-bold py-3 rounded-xl bg-purple-100 w-full cursor-pointer"
-          type="submit"
-        >
-          Login
-        </button>
-      </form>
+        </FormKitInput>
+      </FormKit>
     </div>
     <div
       class="purple-wrapper h-full w-full bottom-0 absolute"
@@ -113,19 +114,15 @@
 <script setup lang="ts">
 import { ModalType, ModalProps } from '@/types'
 import { LoginOrSignupProps } from '@/types/auth'
+import { InputRules } from '@/types/form'
 
-const loginData = reactive<LoginOrSignupProps>({
-  username: '',
-  password: '',
-  email: ''
-})
 const activeBlock = ref<'left' | 'right'>('right')
 
 const changeBlock = (block: 'left' | 'right') => {
   activeBlock.value = block
 }
-const handleSubmit = () => {
-  console.log('Form submitted:', loginData)
+const handleSubmit = (data: LoginOrSignupProps) => {
+  console.log('Form submitted:', data)
 }
 </script>
 
